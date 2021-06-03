@@ -1,7 +1,7 @@
 //NeoPixel 
 #include <Adafruit_NeoPixel.h>
-#define PIN 3   // input pin Neopixel is attached to
-#define NUMPIXELS      20 // number of neopixels in strip
+#define PIN 3   // input pin Neopixel is attached to / hvilken Pin lyslenka sin datainput har
+#define NUMPIXELS      20 // number of neopixels in strip / antall LEDlys i lyslenka
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 //Radiohead nrf24
@@ -11,7 +11,7 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 
 RH_NRF24 nrf24;
 
-const int ptPin=A0; //Phototransistoren 
+const int ptPin=A0; //Fototransistoren 
 
 int delayval = 100; // delay i ms
 
@@ -23,9 +23,8 @@ int blueColor = 0;
 void setup() {
   // Initialize the NeoPixel library.
   pixels.begin();
-  pixels.show();//skrur av lys
-  pixels.setBrightness(50); //max=255, lysstyrke
-  pinMode(ptPin,INPUT); //phototransistor
+  pixels.show();//viser lysene, forelopig avskrudd
+  pinMode(ptPin,INPUT); //fototransistor
 
   Serial.begin(9600);
     while (!Serial) 
@@ -41,9 +40,8 @@ void setup() {
       Serial.println("setRF failed");
     // feilmeldinger    
       
-     pixels.setBrightness(25); 
-     colorPixels(255,255,255);
-     // bli hvit
+     pixels.setBrightness(25); //max=255, lysstyrke. setter lysstyrken litt lavere slik at lysene ikke lyser saa skarpt
+     colorPixels(255,255,255); //lyser hvitt
 }
 
 void loop() {
@@ -58,7 +56,7 @@ void loop() {
     // dersom meldingen er gyldig
     {
       while (!isCupOn()){
-        // her har vi motat meldingen om kaffepause, men må vente på koppen
+        // her har vi mottat meldingen om kaffepause, men må vente på koppen
         pixels.setBrightness(50); 
         colorPixels(255,255,0); 
         // brukeren varsles ved at lyset blir gult
@@ -83,7 +81,7 @@ void loop() {
     // nå er det kaffepause
   }
   if (isCupOn()){
-  // dersom koppen blir lagt
+  // dersom koppen blir lagt paa
     pixels.setBrightness(50);
     colorPixels(255,255,0); 
     // bli gul
@@ -98,11 +96,11 @@ void loop() {
   uint8_t len = sizeof(buf);
   // lagrer meldingen og lengden på meldingen
 
-  if (nrf24.waitAvailableTimeout(500))
+  if (nrf24.waitAvailableTimeout(500)) 
   { 
-    // Should be a reply message for us now   
+    // venter paa returmelding  
     if (nrf24.recv(buf, &len))
-    // dersom meldingen er gyldig
+    // dersom meldingen er gyldig og vi faar en returmelding
     {
       rainbow(2);
       // regnbue 
@@ -126,7 +124,7 @@ void loop() {
     
   }
   if (!isCupOn()){
-    // dersom koppen ikke er på og det ikke er pause så skal lyset være hvit
+    // dersom koppen ikke er på og det ikke er pause så skal lyset være hvitt
     colorPixels(255,255,255);
   }
 }
@@ -142,9 +140,9 @@ void colorPixels(int red, int green, int blue){
 }
 
 bool isCupOn(){
-// definerer metoden for å sjekke koppen
+// definerer metoden for å sjekke om koppen er paa
   int sensorValue=analogRead(ptPin);
-  // henter verdien fra lyssensoren
+  // henter verdien fra fototransistoren
   if (sensorValue>50){
     return false;
     // dersom det er lyst (koppen er ikke paa) gi false
@@ -156,7 +154,8 @@ bool isCupOn(){
   }
 }
 
-//From Strandtest example, NeoPixel Library
+//rainbow er tatt fra Strandtest example, NeoPixel Library
+// enkelte justeringer er gjort i koden for at den ikke skal loopes gjennom altfor mange ganger
 // Rainbow cycle along whole strip. Pass delay time (in ms) between frames.
 void rainbow(int wait) {
   // Hue of first pixel runs 5 complete loops through the color wheel.
@@ -182,7 +181,7 @@ void rainbow(int wait) {
 }
 
 void pause (){
-// definerer pause metoden
+// definerer pausemetoden
   colorPixels(0,255,0);
   // gjør alle lysene grønne
   for (int i=0; i < NUMPIXELS; i++) {
@@ -191,7 +190,7 @@ void pause (){
     pixels.show();
     // gjør pixelen hvit
     delay(1000); 
-    //med mellomrom 
+    //venter angitt tid før den gjør neste pixel hvit.  
     //delay(15000) dersom det er 5 min pause, for testing brukte vi 1000ms
   }
 }
