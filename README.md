@@ -2,7 +2,7 @@
 ## Prosjektgruppe kAMeRAT 
 Gruppemedlemmer: Andrea Corneliussen Austeng, Andreas Askim Vatne, Mathias Monrad Morsund, Ragnhild Myrnes, Thea Løseth
 <p align="center">
-  <img width="200" src="https://user-images.githubusercontent.com/78514454/120864459-87d66480-c58c-11eb-846a-10a4990b4771.PNG">
+  <img width="300" src="https://user-images.githubusercontent.com/78514454/120864459-87d66480-c58c-11eb-846a-10a4990b4771.PNG">
 </p>
 
 Arduino-kode kan sees i kAMeRAT.ino
