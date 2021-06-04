@@ -142,7 +142,7 @@ void colorPixels(int red, int green, int blue){
 bool isCupOn(){
 // definerer metoden for å sjekke om koppen er paa
   int sensorValue=analogRead(ptPin);
-  // henter verdien fra fototransistoren
+  // henter verdien fra fototransistoren, verdi kan vaere max 1023
   if (sensorValue>50){
     return false;
     // dersom det er lyst (koppen er ikke paa) gi false
