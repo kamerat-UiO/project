@@ -4,7 +4,7 @@
 
 Arduino-kode kan sees i kAMeRAT.ino
 
-Video av løsningen kan sees [her](https://www.uio.no/studier/emner/matnat/ifi/IN1060/v21/prosjekter-var-2021/kamerat/)
+Video av løsningen kan sees [her snart](https://www.uio.no/studier/emner/matnat/ifi/IN1060/v21/prosjekter-var-2021/kamerat/)
 
 Prosjektside kan sees [her](https://www.uio.no/studier/emner/matnat/ifi/IN1060/v21/prosjekter-var-2021/kamerat/)
 
