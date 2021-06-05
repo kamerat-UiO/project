@@ -7,7 +7,7 @@ Gruppemedlemmer: Andrea Corneliussen Austeng, Andreas Askim Vatne, Mathias Monra
 
 Arduino-kode kan sees i kAMeRAT.ino
 
-Video av løsningen kan sees [her](https://www.youtube.com/watch?v=5T8AcKW6RDY&ab_channel=GREENDRAWER)
+Video av løsningen i bruk kan sees [her](https://www.youtube.com/watch?v=5T8AcKW6RDY&ab_channel=GREENDRAWER)
 
 Prosjektside kan sees [her](https://www.uio.no/studier/emner/matnat/ifi/IN1060/v21/prosjekter-var-2021/kamerat/)
 
